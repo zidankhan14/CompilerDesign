@@ -1,0 +1,33 @@
+#include <iostream>
+#include <cstring>
+using namespace std;
+
+int main() {
+    char input[100];
+    cout<<"Enter a string: ";
+    cin>>input;
+
+    int valid=1;
+    int length=strlen(input);
+
+    if (!((input[0]>='A' && input[0]<='Z') ||(input[0]>='a' && input[0]<='z') || input[0]=='_')) {
+        valid=0;
+    }
+
+    for (int i=1; i<length; i++) {
+        if (!((input[i]>='A' && input[i]<='Z') || (input[i]>='a' && input[i] <= 'z') ||
+              (input[i]>='0' && input[i]<='9') || input[i]=='_')){
+            valid=0;
+            break;
+        }
+    }
+
+    if(valid == 1) {
+        cout<<"The input is a valid identifier."<<endl;
+    }
+    else{
+        cout<<"The input is NOT a valid identifier."<<endl;
+    }
+
+    return 0;
+}

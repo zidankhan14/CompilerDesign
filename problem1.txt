@@ -1,0 +1,26 @@
+#include<iostream>
+using namespace std;
+
+int main() {
+    string Giveinput;
+    cout<<"Enter input: ";
+    cin>>Giveinput;
+
+    int fixed=1;
+
+    for (int i=0; i<Giveinput.length(); i++) {
+        if (Giveinput[i]<'0' || Giveinput[i] > '9') {
+            fixed = 0;
+            break;
+        }
+    }
+
+    if(fixed){
+        cout<<"Numeric constant"<<endl;
+    } 
+    else{
+        cout<<"Not numeric constant"<<endl;
+    }
+
+    return 0;
+}
