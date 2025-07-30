@@ -1,0 +1,66 @@
+#include <iostream>
+using namespace std;
+
+int main(){
+    char identifier[100];
+    char uppercaseLetters[]={'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'};
+    char lowercaseLetters[]={'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'};
+    char digits[]={'0','1','2','3','4','5','6','7','8','9'};
+
+    bool isIdentifierValid=false;
+    int index=0;
+
+    cout<<"Enter input: ";
+    cin>>identifier;
+
+    bool isFirstCharValid=false;
+    for (int j = 0; j < 26; j++){
+        if (identifier[0]==uppercaseLetters[j] || identifier[0] == lowercaseLetters[j]){
+            isFirstCharValid=true;
+            break;
+        }
+    }
+    if(identifier[0]=='_') isFirstCharValid=true;
+
+    if(!isFirstCharValid){
+        isIdentifierValid=false;
+    }
+    else{
+        isIdentifierValid = true;
+        index=1;
+        while(identifier[index] != '\0'){
+            bool isCurrentCharValid=false;
+
+
+            for (int j=0; j<26;j++){
+                if (identifier[index]==uppercaseLetters[j] || identifier[index]==lowercaseLetters[j]){
+                    isCurrentCharValid=true;
+                    break;
+                }
+            }
+
+            for(int j=0; j<10; j++) {
+                if (identifier[index]==digits[j]) {
+                    isCurrentCharValid=true;
+                    break;
+                }
+            }
+
+            if (identifier[index]=='_') isCurrentCharValid=true;
+
+            if (!isCurrentCharValid){
+                isIdentifierValid = false;
+                break;
+            }
+
+            index++;
+        }
+    }
+
+    if(isIdentifierValid)
+        cout<<"This is a valid identifier."<<endl;
+    else
+        cout<<"This is not a valid identifier."<<endl;
+
+    return 0;
+}
